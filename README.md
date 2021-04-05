@@ -1,5 +1,5 @@
 # Procurement-Mnagement-System
-This system is made for the ease of the user and to rid the boring and humongous piles of registers, which have more probability of being lost through any kind of accident or human discrepancy.
+This system is made for the ease of the Accessory Manager, whose job is to keep record of all the accessories taken by an employee and the availablity of all acessories, and to rid the boring and humongous piles of registers, which have more probability of being lost through any kind of accident or human discrepancy.
 
 Procurement Management System would allow you to ;
 easily keep the record of all employees

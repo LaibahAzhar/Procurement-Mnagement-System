@@ -5,12 +5,19 @@
  */
 package GUI;
 
+import management.systen.Manager;
+
 /**
  *
  * @author hp
  */
 public class Login extends javax.swing.JFrame {
     MainMeniu menu = new MainMeniu();
+    Manager user = new Manager();
+    SuccessMessage success = new SuccessMessage();
+    Errrormessage error = new Errrormessage();
+    
+    
 
     /**
      * Creates new form Login
@@ -80,13 +87,20 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("E-mail");
 
+        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(102, 102, 102));
         jTextField1.setText("abcd1234@mail.com");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password");
 
+        jPasswordField1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jPasswordField1.setText("jPasswordField1");
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -158,7 +172,7 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 559, Short.MAX_VALUE)
+            .addGap(0, 565, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -178,6 +192,11 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
          menu.setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+         
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments

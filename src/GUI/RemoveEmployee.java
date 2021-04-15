@@ -5,18 +5,30 @@
  */
 package GUI;
 
+import management.systen.Employee;
+import management.systen.Systems;
+
 /**
  *
  * @author hp
  */
 public class RemoveEmployee extends javax.swing.JFrame {
-MainMeniu menu = new MainMeniu();
+
+    MainMeniu menu = new MainMeniu();
+    Systems d = new Systems();
+    Employee emp = new Employee();
+    SuccessMessage success = new SuccessMessage();
+    Errrormessage error = new Errrormessage();
+
     /**
      * Creates new form RemoveEmployee
      */
     public RemoveEmployee() {
         initComponents();
     }
+    String cnic;
+    String name;
+    String email;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,6 +101,11 @@ MainMeniu menu = new MainMeniu();
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Remove");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -163,7 +180,7 @@ MainMeniu menu = new MainMeniu();
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -209,21 +226,41 @@ MainMeniu menu = new MainMeniu();
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
-            EmployeeInformation info = new EmployeeInformation();
-       info.setVisible(true);
+        EmployeeInformation info = new EmployeeInformation();
+        info.setVisible(true);
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+       name = jTextField1.getText();
+              
+// TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
+        cnic = jTextField2.getText();
+        
+// TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+       email = jTextField3.getText();
+       
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+       try 
+       {
+          
+           d.addEmployee(name, cnic, email);
+           success.setVisible(true);
+       }catch(Exception e )
+       {
+           error.setVisible(true);
+       }          
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments

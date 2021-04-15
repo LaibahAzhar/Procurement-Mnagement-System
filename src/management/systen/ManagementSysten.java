@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package management.systen;
-
+import java.util.Scanner;
 import GUI.MainMeniu;
 
 /**
@@ -17,11 +17,12 @@ public class ManagementSysten {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        MainMeniu main= new MainMeniu();
-       main.setVisible(true);
+    
+        MainMeniu  main = new MainMeniu();
+        main.setVisible(true);
+      
         // TODO code application logic here
-        
+       
         
     }
     

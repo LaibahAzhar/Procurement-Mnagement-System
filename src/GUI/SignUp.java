@@ -5,12 +5,20 @@
  */
 package GUI;
 
+import management.systen.Manager;
+
 /**
  *
  * @author hp
  */
 public class SignUp extends javax.swing.JFrame {
 MainMeniu menu = new MainMeniu();
+Manager user = new Manager();
+SuccessMessage success = new SuccessMessage();
+Errrormessage error = new Errrormessage();
+  String email;
+  String Password;
+  String Cpass;  
     /**
      * Creates new form SignUp
      */
@@ -107,12 +115,22 @@ MainMeniu menu = new MainMeniu();
         jLabel4.setText("Password");
 
         jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Confirm Password");
 
         jPasswordField2.setText("jPasswordField2");
+        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField2ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -126,6 +144,11 @@ MainMeniu menu = new MainMeniu();
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Submit");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -182,6 +205,8 @@ MainMeniu menu = new MainMeniu();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+      
+        email = jTextField1.getText();
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
@@ -195,6 +220,29 @@ MainMeniu menu = new MainMeniu();
         // TODO add your handling code here:
         menu.setVisible(true);
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+         Password = jPasswordField1.getText();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
+
+    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+        Cpass = jPasswordField2.getText();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField2ActionPerformed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+
+        try{
+            if(user.setEmail(email)==true && user.setPassword(Password)==true )
+            {
+                success.setVisible(true);
+            }
+        }catch(Exception e){
+            error.setVisible(true);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments

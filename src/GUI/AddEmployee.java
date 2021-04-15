@@ -5,12 +5,20 @@
  */
 package GUI;
 
+import management.systen.Employee;
+import management.systen.Systems;
+
 /**
  *
  * @author hp
  */
 public class AddEmployee extends javax.swing.JFrame {
     MainMeniu menu = new MainMeniu();
+    Systems d = new Systems();
+    Employee emp = new Employee();
+    SuccessMessage success = new SuccessMessage();
+    Errrormessage error = new Errrormessage();
+    
 
     /**
      * Creates new form AddEmployee
@@ -19,6 +27,9 @@ public class AddEmployee extends javax.swing.JFrame {
         initComponents();
     }
 
+    String cnic;
+    String name;
+    String email;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -90,6 +101,11 @@ public class AddEmployee extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Add");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -202,16 +218,45 @@ public class AddEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+       name = jTextField1.getText();
+       if(emp.setName(name)!=true )
+       {
+           error.setVisible(true);
+       }
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
+    cnic = jTextField2.getText();
+    if(emp.setCNIC(cnic)!= true)
+    {
+        error.setVisible(true);
+    }
+// TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+       
+    email = jTextField3.getText();
+    if(emp.setEmail(email) != true)
+    {
+        error.setVisible(true);
+    }
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+            try 
+       {
+           if(emp.setName(name)==true && emp.setCNIC(this.cnic)==true && emp.setEmail(email))
+           {d.addEmployee(name, cnic, email);
+           success.setVisible(true);}
+       }catch(Exception e )
+       {
+           error.setVisible(true);
+       }         
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments

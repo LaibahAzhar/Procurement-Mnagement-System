@@ -5,20 +5,28 @@
  */
 package GUI;
 
+import javax.swing.JOptionPane;
+import management.systen.Accessories;
+import management.systen.Systems;
+
 /**
  *
  * @author hp
  */
 public class RemoveAccessory extends javax.swing.JFrame {
     MainMeniu menu = new MainMeniu();
-
+    Systems c = new Systems();
+    Accessories access = new Accessories();
+    Errrormessage error = new Errrormessage();
+    SuccessMessage success = new SuccessMessage();
     /**
      * Creates new form RemoveAccessory
      */
     public RemoveAccessory() {
         initComponents();
     }
-
+ int counts;
+ String NAME;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,6 +96,11 @@ public class RemoveAccessory extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Remove");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -193,12 +206,30 @@ public class RemoveAccessory extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        this.NAME = jTextField1.getText();
+       
+       
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
+        String COUNT = jTextField2.getText();
+       this.counts =Integer.parseInt(COUNT);
+        
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+       try 
+       {
+           
+           c.removeAccessory(this.NAME, this.counts);
+           success.setVisible(true);
+       }catch(Exception e )
+       {
+           error.setVisible(true);
+       }
+       
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -231,6 +262,8 @@ public class RemoveAccessory extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new RemoveAccessory().setVisible(true);
+             
+                
             }
         });
     }

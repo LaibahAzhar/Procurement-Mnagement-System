@@ -5,12 +5,19 @@
  */
 package GUI;
 
+import management.systen.Accessories;
+import management.systen.Systems;
+
 /**
  *
  * @author hp
  */
 public class AddAccessory extends javax.swing.JFrame {
     MainMeniu menu = new MainMeniu();
+    Accessories access = new Accessories();
+    Systems c = new Systems();
+    SuccessMessage success = new SuccessMessage();
+    Errrormessage error = new Errrormessage();
 
     /**
      * Creates new form AddAccessory
@@ -19,6 +26,8 @@ public class AddAccessory extends javax.swing.JFrame {
         initComponents();
     }
 
+    int counts;
+    String NAME;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,6 +97,11 @@ public class AddAccessory extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Add");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -186,12 +200,30 @@ public class AddAccessory extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+      this.NAME = jTextField1.getText();
+      
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+       String COUNT = jTextField2.getText();
+       this.counts =Integer.parseInt(COUNT);
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+           
+         try 
+       {
+           if(access.setName(this.NAME)==true && access.setCount(this.counts)==true)
+           {c.addAccessory(this.NAME, this.counts);
+           success.setVisible(true);}
+       }catch(Exception e )
+       {
+           error.setVisible(true);
+       }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments

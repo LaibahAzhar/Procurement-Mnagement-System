@@ -27,7 +27,7 @@ return false;
 
     public boolean setCNIC(String CNIC) {
         for (int i = 0; i < CNIC.length(); i++) {
-            if ((this.CNIC.charAt(0) >= '0' && this.CNIC.charAt(0) <= '9') || this.CNIC.charAt(5) == '-' || this.CNIC.charAt(12) == '-') {
+            if ((this.CNIC.charAt(i) >= '0' && this.CNIC.charAt(i) <= '9') || this.CNIC.charAt(5) == '-' || this.CNIC.charAt(13) == '-') {
                 this.CNIC = CNIC;
                 return true;
             }
